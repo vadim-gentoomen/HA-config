@@ -1,0 +1,24 @@
+#
+#
+#
+# Whitelist
+!*.yaml
+!.gitignore
+!*.md
+!*.sh
+!*.js*
+
+# Ignore dirs
+.storage
+.cloud
+.google.token
+.ssh
+custom_components
+image
+www
+zigbee2mqtt
+
+# Ignore files
+secrets.yaml
+*.log*
+zigbee.db

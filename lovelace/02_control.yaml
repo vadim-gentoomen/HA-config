@@ -1,0 +1,99 @@
+##################   Управление
+title: Гостиная
+icon: mdi:account-multiple
+cards:
+
+############################ Колонка 1 ############################
+
+    - type: vertical-stack
+      cards:
+      
+        - type: markdown
+          style: |
+              ha-card {
+                font-size: 26px;
+              }          
+          content: >
+             **Управление**
+             
+        - type: custom:stack-in-card
+          mode: vertical
+          cards:  
+            - type: markdown
+              content: >
+                 **Розетки**
+
+            - type: horizontal-stack
+              cards:
+                - type: entities
+                  style: |
+                    ha-card {
+                     color: #00BFFF;
+                     --paper-item-icon-color: #00BFFF;
+                     --iron-icon-stroke-color: #FFFFE0;
+                     font-weight: bold;
+                     font-size: 14px;
+                    } 
+                  show_header_toggle: false
+                  entities:
+                    - switch.0x00124b0024c2aaaf
+                  
+                - type: entities
+                  show_header_toggle: false
+                  entities:
+                    - switch.0x00124b0024c2570a
+
+
+############################ Колонка 2 ############################
+
+    - type: vertical-stack
+      cards:
+
+        - type: markdown
+          style: |
+              ha-card {
+                font-size: 26px;
+              }   
+          content: >
+              **Мониторинг**
+
+        - type: custom:stack-in-card
+          mode: vertical
+          cards: 
+
+            - type: markdown
+              content: >
+                 **Комната**
+
+            - type: glance
+              show_state: true
+              show_name: true
+              state_color: true
+              entities:
+              - entity: sensor.0x00124b00251943bc_temperature
+                name: Температура
+              - entity: sensor.0x00124b00251943bc_humidity
+                name: Влажность
+                
+############################ Колонка 3 ############################
+
+    - type: vertical-stack
+      cards:
+
+        - type: markdown
+          style: |
+              ha-card {
+                font-size: 26px;
+              }   
+          content: >
+              **Медиа** 
+              
+              
+              
+
+                
+                
+                
+                
+                
+                

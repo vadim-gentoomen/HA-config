@@ -1,0 +1,68 @@
+homeassistant:
+    name: My Smart Home
+    unit_system: metric
+    time_zone: Europe/Moscow
+    packages: !include_dir_merge_named includes/packages
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+lovelace:
+    mode: yaml
+    resources:
+        - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+          type: module
+        - url: /hacsfiles/stack-in-card/stack-in-card.js
+          type: module
+        - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
+          type: module
+        - url: /hacsfiles/history-explorer-card/history-explorer-card.js
+          type: module 
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+#Вынос во внешние файлы
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+#Вынос во внешние папки
+#sensor: !include_dir_merge_list includes/sensor
+#binary_sensor: !include_dir_merge_list includes/bin_sensor
+
+# android_ip_webcam:
+#   - host: 192.168.1.100
+#     sensors:
+#         - audio_connections
+#         - battery_level
+#         - battery_temp
+#         - battery_voltage
+#         - light
+#         - motion
+#         - pressure
+#         - proximity
+#         - sound
+#         - video_connections
+#     switches:
+#         - exposure_lock
+#         - ffc
+#         - focus
+#         - motion_detect
+#         - torch
+#         - whitebalance_lock
+#         - video_recording
+        
+telegram_bot:
+  - platform: polling
+    api_key: !secret api_key_bot
+    allowed_chat_ids:
+      - !secret chat_id_vadim
+      
+notify:
+  - name: chat_id_vadim
+    platform: telegram
+    chat_id: !secret chat_id_vadim
+        
