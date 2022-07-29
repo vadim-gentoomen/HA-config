@@ -24,6 +24,7 @@ tts:
   - platform: google_translate
 
 #Вынос во внешние файлы
+#test
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
