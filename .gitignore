@@ -13,6 +13,7 @@
 .cloud
 .google.token
 .ssh
+blueprints
 custom_components
 image
 www
