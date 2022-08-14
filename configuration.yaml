@@ -1,5 +1,8 @@
 homeassistant:
     name: My Smart Home
+    latitude: 44.981660
+    longitude: 34.092150
+    elevation: 340
     unit_system: metric
     time_zone: Europe/Moscow
     packages: !include_dir_merge_named includes/packages
@@ -22,6 +25,17 @@ lovelace:
 # Text to speech
 tts:
   - platform: google_translate
+  
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+  - 127.0.0.1
+  - 172.30.33.0/24
+  - 172.30.32.0/24
+  - 192.168.1.0/24
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+
 
 #Вынос во внешние файлы
 #test
@@ -33,6 +47,17 @@ scene: !include scenes.yaml
 #Вынос во внешние папки
 #sensor: !include_dir_merge_list includes/sensor
 #binary_sensor: !include_dir_merge_list includes/bin_sensor
+
+#camera:
+#  - platform: mjpeg
+#    mjpeg_url: http://185.76.82.26:10090/video682.mjpg?user=&hq=&fps=25
+#    name: 'Enter 1'
+#  - platform: mjpeg
+#    mjpeg_url: http://185.76.82.26:10090/video684.mjpg?user=&hq=&fps=25
+#    name: 'Enter 2'
+#  - platform: mjpeg
+#    mjpeg_url: http://185.76.82.26:10090/video685.mjpg?user=&hq=&fps=25
+#    name: 'Lift'
 
 # android_ip_webcam:
 #   - host: 192.168.1.100
