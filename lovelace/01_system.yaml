@@ -27,7 +27,7 @@ cards:
     
               - entity: sensor.last_boot_custom
                 type: custom:multiple-entity-row
-                name: В онлайне -
+                name: В онлайне
                 state_header: Сервер
                 entities:
                   - entity: sensor.online_custom
@@ -86,6 +86,16 @@ cards:
               - entity: update.home_assistant_core_update
                 type: custom:multiple-entity-row
                 name: Home Assistant
+                show_state: false
+                entities:
+                  - attribute: installed_version
+                    name: Установлено
+                  - attribute: latest_version
+                    name: Последняя
+                    
+              - entity: update.zigbee2mqtt_update
+                type: custom:multiple-entity-row
+                name: Zigbee2MQTT
                 show_state: false
                 entities:
                   - attribute: installed_version

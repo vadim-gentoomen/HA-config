@@ -25,6 +25,7 @@ lovelace:
 # Text to speech
 tts:
   - platform: google_translate
+    language: "ru"
   
 http:
   use_x_forwarded_for: true
@@ -80,6 +81,14 @@ scene: !include scenes.yaml
 #         - torch
 #         - whitebalance_lock
 #         - video_recording
+
+yandex_smart_home:
+  notifier:
+    - oauth_token: !secret ysh_oauth_token
+      skill_id: !secret ysh_skill_id
+      user_id: !secret ysh_user_id
+
+bluetooth:
         
 telegram_bot:
   - platform: polling
@@ -91,4 +100,12 @@ notify:
   - name: chat_id_vadim
     platform: telegram
     chat_id: !secret chat_id_vadim
+    
+device_tracker:
+  - platform: ping
+    scan_interval: 30
+    count: 2
+    consider_home: 120
+    hosts:
+      ping_vadim: !secret vadim_ip
         

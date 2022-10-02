@@ -1,0 +1,25 @@
+notification:
+
+    automation:
+
+    ## Запрос состояния
+      - id: Запрос состояния системы
+        alias: telegram_system_status_query
+        initial_state: true
+        trigger:
+          - platform: event
+            event_type: telegram_text
+        condition:
+          - condition: template
+            value_template: >-
+              {{ trigger.event.data.text in ["Как дела", "как дела", "Отчет", "отчет", "Статус", "статус"] }}
+        action:
+          - service: telegram_bot.send_message
+            data:
+              target: "{{ trigger.event.data.user_id }}"
+              message: | 
+                   {{"\U0001F567"}} Сервер Raspberry Pi 4B 4GB (Home Assistant)
+                   Отчет за {{ states('sensor.time_date') }}
+                   Загрузка CPU:  {{ states('sensor.processor_use') }}
+                   Температура процессора: {{ states('sensor.processor_temperature') }}
+                   Свободно на диске: {{ states('sensor.disk_free') }}
